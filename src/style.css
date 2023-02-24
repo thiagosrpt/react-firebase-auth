@@ -1,8 +1,8 @@
 .msg {
     position: fixed;
-    width: 400px;
+    width: 450px;
     top: 75px;
-    left: calc(50% - 200px);
+    left: calc(50% - 225px);
     display: flex;
     justify-content: space-around;
     border-radius: 5px;
