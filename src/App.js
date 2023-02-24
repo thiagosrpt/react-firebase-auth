@@ -61,7 +61,6 @@ const App = () => {
                   <Nav.Link as={Link} to="/">Home</Nav.Link>   
                   <Nav.Link as={Link} to="/deposit">Deposit</Nav.Link>
                   <Nav.Link as={Link} to="/withdraw">Withdraw</Nav.Link>
-                  <Button variant="primary" onClick={() => app.auth().signOut()}>Sign Out</Button> 
                 </>
         
                 )}
@@ -74,9 +73,17 @@ const App = () => {
                 )}
             </Nav>
           </Container>
+          <Container style={{justifyContent: "flex-end"}}>
+            {user && (
+              <>
+                <span style={{color: "white", marginRight: 15}}>{user.email}</span>
+                <Button variant="primary" onClick={() => app.auth().signOut()}>Sign Out</Button>
+              </>
+            )}
+          </Container>
         </Navbar>
       </>
-        <div>
+        <div style={{paddingTop: 80, display: "flex", justifyContent: "space-around"}}>
             <UserContext.Provider value={user}>
               <PrivateRoute exact path="/" component={Home} />
               <PrivateRoute exact path="/deposit" component={Deposit} />

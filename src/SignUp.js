@@ -42,16 +42,16 @@ const SignUp = ({ history }) => {
               <Form onSubmit={handleSignUp}>
                 <Form.Group className="mb-1" controlId="formBasicEmail">
                   <Form.Label>Name</Form.Label>
-                  <Form.Control type="name" name="name" placeholder="" />
+                  <Form.Control type="name" name="name" placeholder="" required/>
                   <Form.Label>Last Name</Form.Label>
-                  <Form.Control type="lastName" name="lastName" placeholder="" />
+                  <Form.Control type="lastName" name="lastName" placeholder="" required/>
                   <Form.Label>Email address</Form.Label>
-                  <Form.Control type="email" name="email" placeholder="" />
+                  <Form.Control type="email" name="email" placeholder="" required />
                   <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" name="password" placeholder="" />
+                  <Form.Control type="password" name="password" placeholder="" required/>
                 </Form.Group>
                 <Button variant="primary" type="submit">
-                  Login In
+                  Create Account
                 </Button>
               </Form>
             </Card.Body>
