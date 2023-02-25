@@ -83,7 +83,7 @@ const App = () => {
           </Container>
         </Navbar>
       </>
-        <div style={{paddingTop: 80, display: "flex", justifyContent: "space-around"}}>
+        <div style={{paddingTop: 65, display: "flex", justifyContent: "space-around"}}>
             <UserContext.Provider value={user}>
               <PrivateRoute exact path="/" component={Home} />
               <PrivateRoute exact path="/deposit" component={Deposit} />

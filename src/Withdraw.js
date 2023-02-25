@@ -12,6 +12,7 @@ import "firebase/auth";
 
 import './style.css';
 import BalanceHistory from "./balanceHistory"
+import { ImBoxRemove } from 'react-icons/im';
 
 const Withdraw = () => {
 
@@ -126,7 +127,7 @@ const handleWithdrawal = (e) => {
                     <Form.Control type="number" step="any" placeholder="0" name="amount" ref={amountField}/>
                   </Form.Group>
                   <Button variant="warning" type="submit">
-                    Withdraw Funds
+                     Withdraw <ImBoxRemove/>
                   </Button>
                 </Form>
               </Card.Body>

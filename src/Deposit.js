@@ -13,6 +13,8 @@ import "firebase/auth";
 import './style.css';
 import BalanceHistory from "./balanceHistory"
 
+import { ImBoxAdd } from 'react-icons/im';
+
 const Deposit = () => {
 
   const userContext = useContext(UserContext)
@@ -122,7 +124,7 @@ const Deposit = () => {
                       <Form.Control type="number" step="any" placeholder="0" name="amount" ref={amountField}/>
                     </Form.Group>
                     <Button variant="success" type="submit">
-                      Deposit Funds
+                      Deposit <ImBoxAdd/>
                     </Button>
                   </Form>
                 </Card.Body>

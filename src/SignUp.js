@@ -7,6 +7,11 @@ import firebase from "firebase/app"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
+import "firebase/auth";
+import { FcGoogle } from 'react-icons/fc';
+
+import {handleGoogleSignUp} from './googleAuth'
+
 
 const SignUp = ({ history }) => {
   const handleSignUp = useCallback(async event => {
@@ -41,17 +46,16 @@ const SignUp = ({ history }) => {
             <Card.Body>
               <Form onSubmit={handleSignUp}>
                 <Form.Group className="mb-1" controlId="formBasicEmail">
-                  <Form.Label>Name</Form.Label>
-                  <Form.Control type="name" name="name" placeholder="" required/>
-                  <Form.Label>Last Name</Form.Label>
-                  <Form.Control type="lastName" name="lastName" placeholder="" required/>
-                  <Form.Label>Email address</Form.Label>
-                  <Form.Control type="email" name="email" placeholder="" required />
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" name="password" placeholder="" required/>
+                  <Form.Control type="name" name="name" placeholder="Name" required/>
+                  <Form.Control type="lastName" name="lastName" placeholder="Last Name" required/>
+                  <Form.Control type="email" name="email" placeholder="Email" required />
+                  <Form.Control type="password" name="password" placeholder="Password" required/>
                 </Form.Group>
                 <Button variant="primary" type="submit">
                   Create Account
+                </Button>
+                <Button variant="light" onClick={handleGoogleSignUp}>
+                  Sign up with <FcGoogle />
                 </Button>
               </Form>
             </Card.Body>

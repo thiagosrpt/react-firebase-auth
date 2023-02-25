@@ -22,8 +22,6 @@ const BalanceHistory = () => {
               // sort by timestamp in descending order
               const dateA = data[a].date;
               const dateB = data[b].date;
-              const timeA = data[a].timeStamp;
-              const timeB = data[b].timeStamp;
               return new Date(`${dateB}`) - new Date(`${dateA}`);
             })
             .map((key) => ({ ...data[key], id: key }));

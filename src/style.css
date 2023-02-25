@@ -1,7 +1,7 @@
 .msg {
     position: fixed;
     width: 450px;
-    top: 75px;
+    top: 68px;
     left: calc(50% - 225px);
     display: flex;
     justify-content: space-around;
@@ -34,8 +34,13 @@
     color: rgb(177, 0, 0);
 }
 .deposit::after{
-    content: "↑"
+    content: "+"
 }
 .withdraw::after{
-    content: "↓"
+    content: "-"
+}
+
+input {
+    margin: 0;
+    margin-bottom: 10px;
 }

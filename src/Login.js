@@ -5,6 +5,10 @@ import { AuthContext } from "./Auth.js";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
+import "firebase/auth";
+import { FcGoogle } from 'react-icons/fc';
+
+import {handleGoogleSignUp} from './googleAuth'
 
 const Login = ({ history }) => {
 
@@ -38,15 +42,18 @@ const Login = ({ history }) => {
             <Card.Header>Login</Card.Header>
             <Card.Body>
               <Form onSubmit={handleLogin}>
-                <Form.Group className="mb-1" controlId="formBasicEmail">
-                  <Form.Label>Email address</Form.Label>
+                <Form.Group controlId="formBasicEmail">
                   <Form.Control type="email" name="email" placeholder="Enter email" />
-                  <Form.Label>Password</Form.Label>
                   <Form.Control type="password" name="password" placeholder="Password" />
                 </Form.Group>
-                <Button variant="primary" type="submit">
-                  Login In
-                </Button>
+                <div>
+                  <Button variant="primary" type="submit">
+                    Login
+                  </Button>
+                  <Button variant="light" onClick={handleGoogleSignUp}>
+                    Login with <FcGoogle />
+                  </Button>
+                </div>
               </Form>
             </Card.Body>
           </Card>
