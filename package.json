@@ -2,18 +2,23 @@
   "name": "react-firebase-auth",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {
+    "@firebase/auth": "^0.21.3",
     "firebase": "^7.15.0",
     "react": "^16.8.6",
     "react-bootstrap": "^2.7.1",
     "react-dom": "^16.8.6",
+    "react-icons": "^4.7.1",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.0"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts --openssl-legacy-provider build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
