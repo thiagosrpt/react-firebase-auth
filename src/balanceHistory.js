@@ -20,9 +20,11 @@ const BalanceHistory = () => {
           const sortedHistory = Object.keys(data)
             .sort((a, b) => {
               // sort by timestamp in descending order
+              const dateA = data[a].date;
+              const dateB = data[b].date;
               const timeA = data[a].timeStamp;
               const timeB = data[b].timeStamp;
-              return new Date(`1970/01/01 ${timeB}`).getTime() - new Date(`1970/01/01 ${timeA}`).getTime();
+              return new Date(`${dateB}`) - new Date(`${dateA}`);
             })
             .map((key) => ({ ...data[key], id: key }));
   
@@ -38,9 +40,9 @@ const BalanceHistory = () => {
     }, []);
   
     return (
-      <div >
+      <div style={{maxHeight: 500, width: "100%", overflowY: "scroll"}}>
         <h3>Transaction History</h3>
-        <div style={{maxHeight: 500, width: "100%", overflowY: "scroll"}}>
+        <div style={{display: "flex", flexDirection: "column-reverse"}}>
           {history.map((transaction) => (
             <div key={transaction.id} className={"transactions " + transaction.operation}>
                     <div style={{fontSize: 14}}>{transaction.date}</div>
