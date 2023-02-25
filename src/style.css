@@ -9,3 +9,33 @@
     height: 40px;
     align-items: center;
 }
+
+.transactions {
+    border: 1px solid;
+    border-radius: 5px;
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    min-width: 350px;
+    align-items: flex-end;
+    font-size: 18px;
+}
+
+.deposit{
+    background-color: rgb(245, 255, 245);
+    border-color: rgb(142, 170, 142);
+    color: rgb(37, 170, 37);
+}
+
+.withdraw{
+    background-color: rgb(255, 236, 236);
+    border-color: rgb(182, 154, 154);
+    color: rgb(177, 0, 0);
+}
+.deposit::after{
+    content: "↑"
+}
+.withdraw::after{
+    content: "↓"
+}

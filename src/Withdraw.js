@@ -11,6 +11,7 @@ import "firebase/database";
 import "firebase/auth";
 
 import './style.css';
+import BalanceHistory from "./balanceHistory"
 
 const Withdraw = () => {
 
@@ -62,13 +63,29 @@ const handleValidation = (amount) => {
   return true;
 }
 
+const pushHistory = (amount) => {
+  const user = firebase.auth().currentUser;
+  const currentDate = new Date();
+  const formattedDate = `${currentDate.getDate().toString().padStart(2, '0')}/${(currentDate.getMonth() + 1).toString().padStart(2, '0')}/${currentDate.getFullYear()} ${currentDate.getHours().toString().padStart(2, '0')}:${currentDate.getMinutes().toString().padStart(2, '0')}:${currentDate.getSeconds().toString().padStart(2, '0')}`;
+  const formattedTime = `${currentDate.getHours().toString().padStart(2, '0')}:${currentDate.getMinutes().toString().padStart(2, '0')}:${currentDate.getSeconds().toString().padStart(2, '0')}`;
+  firebase
+  .database()
+  .ref("transactionHistory/" + user.uid)
+  .push({
+    operation: 'withdraw',
+    date: formattedDate,
+    timeStamp: formattedTime,
+    balance: amount
+  });
+}
+
 
 const handleWithdrawal = (e) => {
   e.preventDefault();
   const { amount } = e.target.elements;
   if(handleValidation(amount.value)) {
     const firebaseUser = firebase.auth().currentUser;
-    if(parseFloat(amount.value) < currentAmount)  {
+    if(parseFloat(amount.value) <= currentAmount)  {
       if (firebaseUser) {
         firebase
           .database()
@@ -79,6 +96,7 @@ const handleWithdrawal = (e) => {
           .then(function(transactionResult) {
             const updatedBalance = transactionResult.snapshot.val();
             setCurrentAmount(updatedBalance);
+            pushHistory(parseFloat(amount.value))
             amountField.current.value = '0';
             handleTimeOut("success", "Withdraw has been successfully processed.");
           })
@@ -100,7 +118,7 @@ const handleWithdrawal = (e) => {
         {userContext && (
           <div>
             <Card>
-              <Card.Header>Your Current Balance is: <b>${ currentAmount }</b></Card.Header>
+              <Card.Header>Your Current Balance is: <b>${ parseFloat(currentAmount).toFixed(2) }</b></Card.Header>
               <Card.Body>
                 <Card.Title>Withdraw</Card.Title>
                 <Form onSubmit={handleWithdrawal}>
@@ -115,9 +133,12 @@ const handleWithdrawal = (e) => {
             </Card>
               {statusMessage ? <div class="msg alert alert-success">{statusMessage}</div> : ''}
               {validationMessage ? <div class="msg alert alert-danger">{validationMessage}</div> : ''}
+              <BalanceHistory/>
           </div>
         )}
+        
       </>
+      
     );
   };
 

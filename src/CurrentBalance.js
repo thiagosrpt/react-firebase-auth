@@ -26,7 +26,7 @@ const CurrentBalance = () => {
   });
 
 
-  return (<><span>${currentAmount}</span></>);
+  return (<><span>${ parseFloat(currentAmount).toFixed(2) }</span></>);
 };
 
 export default CurrentBalance;
